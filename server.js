@@ -3,14 +3,12 @@
 const express = require('express');
 const morgan = require('morgan');
 
+const handlers = require('./data/handlers');
+
 const { users } = require('./data/users');
 
 let currentUser = {};
 
-// declare the 404 function
-const handleFourOhFour = (req, res) => {
-  res.status(404).send("I couldn't find what you're looking for.");
-};
 
 // -----------------------------------------------------
 // server endpoints
@@ -21,8 +19,8 @@ express()
   .set('view engine', 'ejs')
 
   // endpoints
-
+  .get('/homepage', handlers.homepage)
   // a catchall endpoint that will send the 404 message.
-  .get('*', handleFourOhFour)
+  .get('*', handlers.handleFourOhFour)
 
   .listen(8000, () => console.log('Listening on port 8000'));
