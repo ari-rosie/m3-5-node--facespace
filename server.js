@@ -5,7 +5,6 @@ const morgan = require('morgan');
 
 const handlers = require('./data/handlers');
 
-const { users } = require('./data/users');
 
 let currentUser = {};
 
@@ -19,8 +18,13 @@ express()
   .set('view engine', 'ejs')
 
   // endpoints
+  .post('/getname', handlers.submitName)
+
+  .get('/signin', handlers.signIn)
+  .get('/users/:id', handlers.profilePage)
   .get('/homepage', handlers.homepage)
   // a catchall endpoint that will send the 404 message.
   .get('*', handlers.handleFourOhFour)
 
+  
   .listen(8000, () => console.log('Listening on port 8000'));
