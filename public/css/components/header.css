@@ -12,7 +12,12 @@
   color: #fff;
   margin-top: 4px;
 }
-.signin-button {
+
+.header a {
+  text-decoration: none;
+}
+
+.signin-button, .signin-name {
   background: var(--primary-color);
   border: 2px solid var(--primary-color);
   border-radius: 3px;
